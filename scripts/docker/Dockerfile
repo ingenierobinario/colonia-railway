@@ -32,7 +32,6 @@ ENV COLONIA_CHROME=/usr/local/bin/colonia-chromium
 USER colonia
 WORKDIR /opt/colonia
 ENV COLONIA_HOME=/data COLONIA_HOST=0.0.0.0 COLONIA_PORT=7440 COLONIA_SECRETS=file COLONIA_UPDATES=off COLONIA_RUNTIME_SKILLS=off
-VOLUME /data
 EXPOSE 7440
 HEALTHCHECK --interval=30s --timeout=5s CMD if [ -n "${RAILWAY_SERVICE_ID:-}" ]; then p="$PORT"; else p="${COLONIA_PORT:-7440}"; fi; curl -qfsS "http://127.0.0.1:$p/health" >/dev/null || exit 1
 ENTRYPOINT ["/usr/local/bin/colonia-iniciar"]
